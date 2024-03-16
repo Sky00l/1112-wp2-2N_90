@@ -1,0 +1,21 @@
+{
+    "name": "sever_90",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "start": "node sever_90",
+        "dev": "nodemon sever_90",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.3",
+        "morgan": "^1.10.0",
+        "nanoid": "^5.0.6"
+    }
+}
