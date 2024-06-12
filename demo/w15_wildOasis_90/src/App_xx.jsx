@@ -7,7 +7,8 @@ import AppLayout from './ui/AppLayout';
 import LandingStatic_xx from './pages/open/pages/LandingStatic_xx';
 import Landing_xx from './pages/open/pages/Langing_xx';
 import GlobalStyles from './styles/GlobalStyles';
-import ProtectedRoute from './ui/ProtectedRoute'
+import ProtectedRoute from './ui/ProtectedRoute';
+import About_xx from './pages/open/pages/About_xx';
 
 import {
   Account_xx,
@@ -30,22 +31,29 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element: <Landing_xx/>
+    path: '/',
+    element: <Landing_xx />,
   },
   {
-    path:'/landing',
-    element: <Landing_xx/>
+    path: '/landing',
+    element: <Landing_xx />,
   },
   {
-    path:'/login',
-    element: <Login_xx/>
+    path: '/login',
+    element: <Login_xx />,
+  },
+  {
+    path: '/about_90',
+    element: <About_xx />,
   },
   {
     path: '/',
-    element: 
-    <ProtectedRoute> <AppLayout/></ProtectedRoute>
-   ,
+    element: (
+      <ProtectedRoute>
+        {' '}
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: 'dashboard',
