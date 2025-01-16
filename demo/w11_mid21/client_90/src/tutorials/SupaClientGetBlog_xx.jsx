@@ -16,7 +16,7 @@ const SupaClientGetBlog_xx = () => {
       // const response = await fetch(api_url);
       // const data = await response.json();
 
-      let { data, error } = await supabase.from('card_xx').select('*');
+      let { data, error } = await supabase.from('blog_90').select('*');
 
       console.log('blogs data', data);
       setBlogs(data);

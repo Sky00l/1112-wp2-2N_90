@@ -19,7 +19,7 @@ const Mid1SupaBlog_xx = () => {
     queryKey: ['blogs_xx'],
     queryFn: async () => {
       try {
-        let { data, error } = await supabase.from('blog2_xx').select('*');
+        let { data, error } = await supabase.from('card2_90').select('*');
         console.log('blogs', data);
         return data;
       } catch (error) {
@@ -33,7 +33,7 @@ const Mid1SupaBlog_xx = () => {
     mutationFn: async ({ id, title, descrip, category, img, remote_url }) => {
       try {
         const { data, error } = await supabase
-          .from('blog_xx')
+          .from('card2_90')
           .insert([{ id, title, descrip, category, img, remote_url }])
           .select();
       } catch (error) {
@@ -59,7 +59,7 @@ const Mid1SupaBlog_xx = () => {
   const { mutate: deleteBlog } = useMutation({
     mutationFn: async (id) => {
       try {
-        const { error } = await supabase.from('blog_xx').delete().eq('id', id);
+        const { error } = await supabase.from('card2_90').delete().eq('id', id);
       } catch (error) {
         console.log(error);
       }

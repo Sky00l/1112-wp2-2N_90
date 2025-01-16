@@ -27,13 +27,50 @@ const Mid2NodeBlogLocal_xx = () => {
   console.log('blog data', data);
 
   // Create
-  // const { mutate: addBlog } = useMutation({});
+   const { mutate: addBlog } = useMutation({
+    mutationFn: async ({id,img,remote_img,category,title,desc}) => {
+      try{
+        const {data} = axios.post('http://localhost:5000/api/blogs', {
+          id,
+          img,
+          remote_img,
+          category,
+          title,
+          desc,
+        });
+        console.log('axios new data', data);
+      }catch (error) {
+        console.log(error);
+      }
+    },
+    onSuccess:()=> {
+      queryClient.invalidateQueries({
+        queryKey:['blogs_xx'],
+      });
+      toast.success('blog added, will refresh');
+    }
+   });
 
   // Update
   // const { mutate: updateBlog } = useMutation({});
 
   // Delete
-  // const { mutate: deleteBlog } = useMutation({});
+  const { mutate: deleteBlog } = useMutation({
+    mutationFn: async (id) => {
+      try {
+        const { data } = await axios.delete(`http://localhost:5000/api/blogs/${id}`);
+        console.log('Deleted blog:', data);
+      } catch (error) {
+        console.log('Error deleting blog:', error);
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['blogs_xx'], // 重新加載博客列表
+      });
+      toast.success('Blog deleted, will refresh');
+    },
+  });
 
   // clearAll
   // const { mutate: clearAll } = useMutation({});
@@ -92,7 +129,7 @@ const Mid2NodeBlogLocal_xx = () => {
                       <button
                         className='btn'
                         type='button'
-                        onClick={() => console.log('deleteBlog(id)')}
+                        onClick={() => deleteBlog(id)}
                       >
                         del
                       </button>
@@ -108,7 +145,16 @@ const Mid2NodeBlogLocal_xx = () => {
             <button
               className='btn btn-add'
               type='button'
-              onClick={() => console.log('addBlog(id)')}
+              onClick={() => 
+                addBlog({
+                  id:50,
+                  img:'/images/my-1.jpg',
+                  remote_img:'',
+                  category:'lifestyle',
+                  title:'林泓君 207410290',
+                  desc:'Mid Exam -- React',
+                })
+              }
             >
               Add Blog
             </button>
