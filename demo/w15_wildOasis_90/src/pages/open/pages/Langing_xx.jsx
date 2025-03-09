@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { useCabinsOpen } from '../features/cabins/useCabinsOpen';
 import CabinsList from '../components/CabinsListOpen';
+import PdfPage from '../../PdfPage'
 
 const Landing_xx = () => {
   const { cabins, isLoading } = useCabinsOpen();
@@ -29,7 +30,7 @@ const Landing_xx = () => {
                   <li>
                     <Link
                       className='hover:text-accent-400 transition-colors'
-                      to='/about'
+                      to='/about-pdf'
                     >
                       About
                     </Link>
@@ -54,9 +55,12 @@ const Landing_xx = () => {
               </nav>
             </div>
           </header>
-          <div className='flex-1 px-8 py-12 grid'>
-           <CabinsList cabins={cabins}/>
+
+
+          <div className='flex-1 px-8 py-12'>
+              <CabinsList cabins={cabins} />  
           </div>
+         
         </div>
       </div>
     </>

@@ -43,7 +43,12 @@ function CabinTable() {
           <div>Discount</div>
           <div></div>
         </TableHeader>
-        <img src={data[0].image}/>
+        {/* <img src={data[0].image}/> */}
+        {data.map((cabin) => (
+    <div role="row" key={cabin.id}>
+      <img src={cabin.image} alt={cabin.name} />
+    </div>
+  ))}
       </Table>
       {/* <CreateCabinForm /> */}
     </>
